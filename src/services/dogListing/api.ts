@@ -1,9 +1,16 @@
 import axios from "axios"
 import { BASE_URL } from "../../constants"
-import { Dog, DogSearchResponse, LocationsResponse } from "../../types";
+import { Dog, DogSearchParams, DogSearchResponse, LocationsResponse } from "../../types";
 
 
-export const getDogsSearchListApi = async (from = 0, sort="breed:asc", ageMin = 1, ageMax= 15): Promise<DogSearchResponse> => {
+export const getDogsSearchListApi = async ({
+    from = 0,
+    sort = "breed:asc",
+    ageMin = 1,
+    ageMax = 15,
+    breeds = [],
+    zipCodes = [],
+  }: DogSearchParams): Promise<DogSearchResponse> => {
     const response = await axios.get(
         `${BASE_URL}/dogs/search`,
         {
@@ -13,7 +20,9 @@ export const getDogsSearchListApi = async (from = 0, sort="breed:asc", ageMin = 
                 ageMax: ageMax,
                 size: 25,
                 from: from,
-                sort: sort
+                sort: sort,
+                breeds: breeds,
+                zipCodes: zipCodes
             }
         }
     )
@@ -41,4 +50,14 @@ export const postLocationsApi = async (zipCodes: string[]): Promise<LocationsRes
         }
     )
     return response.data
+}
+
+export const getBreedsApi = async (): Promise<string[]> => {
+    const response = await axios.get(
+        `${BASE_URL}/dogs/breeds`,
+        {
+            withCredentials: true,
+        }
+    )
+    return response.data;
 }

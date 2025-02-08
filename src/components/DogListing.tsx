@@ -2,19 +2,12 @@ import { Fragment, useEffect, useState } from "react";
 import { useFetchDogDetails, useFetchLocations } from "../services/dogListing/servicesQuery"
 import { DogCard } from "./DogCard"
 import { Dog, LocationsResponse } from "../types";
-import { usePagination } from "../hooks/usePagination";
+import { useRecoilValue } from "recoil";
+import { dogStoreAtom } from "../store/dogStoreAtom";
 
-interface DogListingProps {
-    dogList: string[];
-  }
-
-export const DogListing = ({ dogList }: DogListingProps) => {
+export const DogListing = () => {
     const [dogDetailListWithLocations, setDogDetailListWithLocations] = useState<Dog[]>([]);
-
-    const {
-        isDogSearchLoading,
-        isDogSearchError,
-    } = usePagination();
+    const { dogList, isError: isDogSearchError } = useRecoilValue(dogStoreAtom);
 
     const {
         mutate: fetchDogDetails,
@@ -65,7 +58,7 @@ export const DogListing = ({ dogList }: DogListingProps) => {
         if (dogList?.length) {
             fetchDogDetails(dogList)
         }
-        // if (dogDetailList?.length){
+        // if ( sdogDetailList?.length){
         //     const zipCodes: string[] = dogDetailList?.map((dog: Dog)=> dog.zip_code) ?? [];
         //     fetchAndSetLocations(zipCodes);
         // }
@@ -80,7 +73,7 @@ export const DogListing = ({ dogList }: DogListingProps) => {
         }
     }, [dogDetailList]);
     
-    const isLoading = isDogSearchLoading || isDogDetailLoading || isLocationsLoading;
+    const isLoading = isDogDetailLoading || isLocationsLoading;
     const isError = isDogSearchError || isDogDetailError || isLocationsError;
 
     // Handle loading states

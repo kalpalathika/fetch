@@ -28,3 +28,12 @@ export interface LocationsResponse {
     state: string,
     zip_code: string
 }
+
+export interface DogSearchParams {
+    from?: number;
+    sort?: string;
+    ageMin?: number;
+    ageMax?: number;
+    breeds?: string[]; // Array of breed names
+    zipCodes?: string[]; // Array of zip codes
+  }

@@ -15,10 +15,10 @@ export const FavouriteListing = () => {
             </div>
             <div className="flex flex-wrap gap-6 justify-center items-center mt-12">
 
-                { new Array(10).fill(null).map((_,index) => (
-                        <DogCard key={index}/>
+                {/* { new Array(10).fill(null).map((_,index) => (
+                        <DogCard key={index} dog={undefined}/>
                     )
-                )}
+                )} */}
             </div>
         {/* <div className="mt-8">
             <Pagination/>

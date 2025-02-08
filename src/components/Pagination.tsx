@@ -1,13 +1,14 @@
 import ReactPaginate from 'react-paginate';
-
-interface PaginationProps {
-  total: number;
-  handlePageChange: (page: number) => void; 
-}
+import { usePagination } from '../hooks/usePagination';
+import { useRecoilValue } from 'recoil';
+import { dogStoreAtom } from '../store/dogStoreAtom';
 
 
-export const Pagination = ({ total, handlePageChange} : PaginationProps) => {
-  
+
+export const Pagination = () => {
+  const {total} = useRecoilValue(dogStoreAtom)
+
+  const {handlePageChange} = usePagination()
   return (
         <ReactPaginate
             breakLabel="..."

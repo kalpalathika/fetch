@@ -1,11 +1,20 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { getDogsSearchListApi, postDogsApi, postLocationsApi } from "./api"
-import { Dog, DogSearchResponse, LocationsResponse } from "../../types"
+import { getDogsSearchListApi, postDogsApi, postLocationsApi, getBreedsApi } from "./api"
+import { Dog, DogSearchParams, DogSearchResponse, LocationsResponse } from "../../types"
 
-export const useDogSearchListing = (from=0, sort="breed:asc", ageMin = 1, ageMax=15) => {
+export const useDogSearchListing = (
+    {
+        from = 0,
+        sort = "breed:asc",
+        ageMin = 1,
+        ageMax = 15,
+        breeds = [],
+        zipCodes = [],
+      }: DogSearchParams) => {
     return useQuery<DogSearchResponse>({
-        queryKey: ["dogList",from,sort,ageMin,ageMax],
-        queryFn: () => getDogsSearchListApi(from, sort, ageMin, ageMax),
+        queryKey: ["dogList",from,sort,ageMin,ageMax,breeds],
+        queryFn: () => getDogsSearchListApi({ from, sort, ageMin, ageMax, breeds, zipCodes }),
+        enabled: false
     })
 }
 
@@ -23,4 +32,11 @@ export const useFetchLocations = () => {
             mutationFn: (zipCodes: string[]) => postLocationsApi(zipCodes)
         }
     )
+}
+
+export const useFetchBreeds = () => {
+    return useQuery<string[]>({
+        queryKey: ["breeds"],
+        queryFn: getBreedsApi
+    });
 }

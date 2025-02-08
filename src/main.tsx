@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage.tsx';
 import HomePage from './pages/HomePage.tsx';
 import FavouritesPage from './pages/FavouritesPage.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RecoilRoot } from 'recoil';
 
 const queryClient = new QueryClient();
 
@@ -26,26 +27,28 @@ const PrivateRoute = ({children} : {children: JSX.Element}) => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LoginPage/>} />
-          <Route path="/home" 
-          element={
-            <PrivateRoute> 
-              <HomePage/>
-            </PrivateRoute>
-          } 
-          />
-          <Route path="/favourites" 
-          element={
-            <PrivateRoute>
-              <FavouritesPage/>
-            </PrivateRoute>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage/>} />
+            <Route path="/home" 
+            element={
+              <PrivateRoute> 
+                <HomePage/>
+              </PrivateRoute>
             } 
             />
-        </Routes>
-      </Router>
-    </QueryClientProvider>
+            <Route path="/favourites" 
+            element={
+              <PrivateRoute>
+                <FavouritesPage/>
+              </PrivateRoute>
+              } 
+              />
+          </Routes>
+        </Router>
+      </QueryClientProvider>
+    </RecoilRoot>
   </StrictMode>
 )
