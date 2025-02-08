@@ -54,6 +54,7 @@ export const DogListing = () => {
     }
 
     useEffect(()=> {
+        console.log("here in useEffect",dogList)
 
         if (dogList?.length) {
             fetchDogDetails(dogList)

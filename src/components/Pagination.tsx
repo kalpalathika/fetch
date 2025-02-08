@@ -7,13 +7,12 @@ import { dogStoreAtom } from '../store/dogStoreAtom';
 
 export const Pagination = () => {
   const {total} = useRecoilValue(dogStoreAtom)
-
   const {handlePageChange} = usePagination()
   return (
         <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
-            onPageChange={(selectedItem: { selected: number }) => handlePageChange(selectedItem.selected+1)}
+            onPageChange={(selectedItem: { selected: number }) => handlePageChange(selectedItem.selected)}
             pageRangeDisplayed={5}
             pageCount={Math.ceil(total/25)}
             previousLabel="< previous"
