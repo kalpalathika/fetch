@@ -6,9 +6,10 @@ import { useFavourites } from "../../../hooks/useFavourites";
 
 interface DogCardProps {
     dog: Dog;
+    isHeartRequired?: boolean
 }
 
-export const DogCard : React.FC<DogCardProps> = ({ dog }) => {
+export const DogCard : React.FC<DogCardProps> = ({ dog, isHeartRequired= true }) => {
     const {img, name, age, breed, zip_code,location= null, id} = dog;
     const { addFavourite, removeFavourite, isFavourite } = useFavourites();
 
@@ -42,16 +43,18 @@ export const DogCard : React.FC<DogCardProps> = ({ dog }) => {
 
             </div>
             <div className="flex justify-end w-full">
+               { isHeartRequired && 
                 <button
-                    onClick={()=>handleFavouriteClick(dog)}
-                    type="button"
-                    className="bg-transparent border-none cursor-pointer transition-transform p-4 rounded-lg flex justify-end"
-                    aria-label="Like"
-                >
-                    <HeartIcon className={`w-6 h-6 
-                    ${isFavourite(id)? 'fill-red-500' : 'fill-white'} 
-                    text-red-500 stroke-red-600  hover:fill-red-100`}  /> 
-                </button>
+                        onClick={()=>handleFavouriteClick(dog)}
+                        type="button"
+                        className="bg-transparent border-none cursor-pointer transition-transform p-4 rounded-lg flex justify-end"
+                        aria-label="Like"
+                    >
+                        <HeartIcon className={`w-6 h-6 
+                        ${isFavourite(id)? 'fill-red-500' : 'fill-white'} 
+                        text-red-500 stroke-red-600  hover:fill-red-100`}  /> 
+                    </button>
+                }
             </div>
         </div>
     )
