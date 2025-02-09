@@ -18,12 +18,12 @@ export const Pagination = () => {
             previousLabel="< previous"
             renderOnZeroPageCount={null}
             containerClassName="flex items-center justify-center space-x-2 mt-4"
-            pageClassName="px-3 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 cursor-pointer"
-            activeClassName="bg-indigo-600 text-white"
-            previousClassName="px-3 py-2 bg-gray-300 rounded-md hover:bg-gray-400 cursor-pointer"
-            nextClassName="px-3 py-2 bg-gray-300 rounded-md hover:bg-gray-400 cursor-pointer"
-            breakClassName="px-3 py-2"
-            disabledClassName="opacity-50 cursor-not-allowed"
+            pageClassName="px-3 py-2 rounded-md bg-[#7d1f70] text-white hover:opacity-75 cursor-pointer"
+            activeClassName="bg-[#300d38] text-white"
+            previousClassName="px-3 py-2 bg-[#7d1f70] rounded-md hover:opacity-75 cursor-pointer text-white"
+            nextClassName="px-3 py-2 bg-[#7d1f70] rounded-md hover:opacity-75 cursor-pointer text-white"
+            breakClassName="!text-gray-800 px-3 py-2"
+            disabledClassName="bg-gray-400 cursor-not-allowed pointer-events-none"
         />
   )
 }

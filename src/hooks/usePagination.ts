@@ -24,6 +24,7 @@ export const usePagination = () => {
 
     const handlePageChange = async (page: number) => {
         setFrom((page) * 25)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     };
 
     return {

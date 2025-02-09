@@ -4,6 +4,7 @@ import { DogCard } from "./DogCard"
 import { Dog, LocationsResponse } from "../../../types";
 import { useRecoilValue } from "recoil";
 import { dogStoreAtom } from "../../../store/dogStoreAtom";
+import {SkeletonCardLoader} from "../../common/SkeletonCardLoader";
 
 export const DogListing = () => {
     const [dogDetailListWithLocations, setDogDetailListWithLocations] = useState<Dog[]>([]);
@@ -76,8 +77,9 @@ export const DogListing = () => {
     const isError = isDogSearchError || isDogDetailError || isLocationsError;
 
     // Handle loading states
-    if (isLoading) {
-        return <p>Loading...</p>
+    if (isLoading ) {
+        return <SkeletonCardLoader count={25} />;
+
     }
 
     // Handle loading states
