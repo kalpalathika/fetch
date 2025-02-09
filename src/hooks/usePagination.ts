@@ -20,7 +20,7 @@ export const usePagination = () => {
             isError: isError,
             total: prevState.total || data?.total || 0,
         }));
-    }, [data, isError]);
+    }, [data, isError,setDogStore]);
 
     const handlePageChange = async (page: number) => {
         setFrom((page) * 25)

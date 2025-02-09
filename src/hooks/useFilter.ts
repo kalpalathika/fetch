@@ -8,7 +8,6 @@ import {
 } from "../store/filterStoreAtom";
 import { useDogSearchListing } from "../services/dogListing/servicesQuery";
 import { dogStoreAtom } from "../store/dogStoreAtom";
-import { useEffect } from "react";
 
 export const useFilter= () => {
     // Recoil state
@@ -27,26 +26,35 @@ export const useFilter= () => {
     // Fetch dog search results based on form values
     const {
         data,
-        isPending,
         isError,
         refetch,
     } = useDogSearchListing({ sort, ageMin, ageMax, breeds, zipCodes });
 
-    useEffect(() => {
-        setDogStore({
-            dogList: data?.resultIds || [],
-            isError: isError,
-            total: data?.total || 0,
-        });
-    }, [data, isPending, isError, setDogStore]);
 
     // Form submission handler to refetch data
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        refetch();
-    };
+        try {
+            await refetch(); // Wait for the refetch to complete
+            const updatedData = data?.resultIds || [];
+            const total = data?.total || 0;
+    
+            // Update the state once the refetch is complete
+            setDogStore({
+                dogList: updatedData,
+                isError: isError,
+                total: total,
+            });
+        } catch (error) {
+            console.error("Error refetching data:", error);
+            setDogStore({
+                dogList: [],
+                isError: true,
+                total: 0,
+            });
+        }
 
-    // Handlers for form field changes
+    };
    
 
       
