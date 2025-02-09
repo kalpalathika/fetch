@@ -1,5 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import { Dog } from "../../../types";
+import { HeartIcon } from "@heroicons/react/24/solid";
+import { useFavourites } from "../../../hooks/useFavourites";
 
 
 interface DogCardProps {
@@ -7,10 +9,20 @@ interface DogCardProps {
 }
 
 export const DogCard : React.FC<DogCardProps> = ({ dog }) => {
-    const {img, name, age, breed, zip_code,location= null} = dog;
+    const {img, name, age, breed, zip_code,location= null, id} = dog;
+    const { addFavourite, removeFavourite, isFavourite } = useFavourites();
+
+        // Handle the favorite button click
+        const handleFavouriteClick = (dog: Dog) => {
+            if (isFavourite(id)) {
+                removeFavourite(id); // Remove from favorites if already a favorite
+            } else {
+                addFavourite(dog); // Add to favorites if not already a favorite
+            }
+        };
 
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
             <img className="w-full h-64 object-cover" src={img} alt="Dog Details"/>
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{name}</div>
@@ -29,10 +41,17 @@ export const DogCard : React.FC<DogCardProps> = ({ dog }) => {
                 <p className="text-gray-700 text-base">Zip Code: {zip_code}</p>
 
             </div>
-            <div className="px-6 pt-4 pb-2">
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+            <div className="flex justify-end w-full">
+                <button
+                    onClick={()=>handleFavouriteClick(dog)}
+                    type="button"
+                    className="bg-transparent border-none cursor-pointer transition-transform p-4 rounded-lg flex justify-end"
+                    aria-label="Like"
+                >
+                    <HeartIcon className={`w-6 h-6 
+                    ${isFavourite(id)? 'fill-red-500' : 'fill-white'} 
+                    text-red-500 stroke-red-600  hover:fill-red-100`}  /> 
+                </button>
             </div>
         </div>
     )

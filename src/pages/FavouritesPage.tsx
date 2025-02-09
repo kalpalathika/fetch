@@ -1,4 +1,4 @@
-import { FavouriteListing } from "../components/FavouriteListing"
+import { FavouriteListing } from "../components/Favourites/FavouriteListing"
 import { Layout } from "../components/Home/Layout/Layout"
 
 
