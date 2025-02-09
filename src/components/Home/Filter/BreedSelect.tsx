@@ -29,7 +29,7 @@ export const BreedSelect = () => {
 
     return (
         <div>
-            <label>Dog Breed</label>
+            <p className="text-gray-600 mb-2">Dog Breed</p>
             <Select
                 isMulti
                 name="breeds"

@@ -13,17 +13,17 @@ export const SortSelect = () => {
 
 
   return (
-    <>
-      <p className='mt-4'>Sort By</p>
+    <div>
+      <p className='text-gray-600 mb-4'>Sort By</p>
       <Select
         className="basic-single"
         classNamePrefix="select"
-        defaultValue={{ label: 'Yellow', value: 'yellow' }}
+        defaultValue={{ label: DEFAULT_SORT, value: DEFAULT_SORT }}
         value={SORT_OPTIONS.find(option => option.value === sort)}
         onChange={handleSortChange}
         name="color"
         options={SORT_OPTIONS}
       />
-    </>
+    </div>
   );
 }

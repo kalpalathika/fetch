@@ -24,7 +24,7 @@ export const DogCard : React.FC<DogCardProps> = ({ dog, isHeartRequired= true })
 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-            <img className="w-full h-64 object-cover" src={img} alt="Dog Details"/>
+            <img className="h-64 object-cover block mx-auto" src={img} alt="Dog Details"/>
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{name}</div>
                 <p className="text-gray-700 text-base">Breed: {breed}</p>

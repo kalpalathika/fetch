@@ -36,12 +36,22 @@ export const FavouriteListing = () => {
         setMatchedDog(null); 
     };
 
-    console.log("matched dog--",matchedDog)
+    if (isError){
+        return  <p className="text-gray-600 text-center mt-6 text-lg"> Error loading data. Please try to logout and login again! </p>
+    }
+
+    if (dogList.length === 0 && !isError){
+       return <p className="text-gray-600 text-center mt-6 text-lg">
+            No pawsome favourites yet! 🐾 <br />
+            Add some adorable doggos to your favorites and find your perfect furry friend! ❤️🐶
+        </p>
+    }
+
     return (
         <div>
             <div className="flex items-center justify-center pt-24">
                 <button
-                  className="flex w-96 justify-center items-center rounded-md bg-[#7d1f70] px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="button-theme flex  sm:w-48 md:w-96 lg:w-96 justify-center items-center rounded-md bg-[#7d1f70] px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   onClick={handleFetchMatch}
                 >
                   {isPending? "Finding..." : "Find My Pawfect Match !"}

@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useLogout } from '../../../services/user/servicesQuery';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -10,20 +11,21 @@ function classNames(...classes: (string | undefined | null)[]) {
 
 const NavBar = () => {
   const {mutate} = useLogout()
-
+  const location = useLocation(); // Get current location from react-router-dom
+  
   const handleLogout = (e: React.MouseEvent) => {
     e.preventDefault();
     mutate()
   }
   const navigation = [
-    { name: 'Home', href: '/home', current: true },
-    { name: 'Favourites', href: '/favourites', current: false },
+    { name: 'Home', href: '/home', current: location.pathname === '/home' },
+    { name: 'Favourites', href: '/favourites', current: location.pathname === '/favourites' },
     { name: 'Logout', href: '#', current: false, onClick: handleLogout },
   ]
 
   return (
     <Disclosure as="nav" className="bg-[#7d1f70] w-screen">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
@@ -53,7 +55,7 @@ const NavBar = () => {
                     aria-current={item.current ? 'page' : undefined}
                     onClick={item.onClick}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-white hover:bg-gray-700 hover:text-white',
+                      item.current ? 'bg-[#300d38] text-white' : 'text-white hover:bg-gray-700 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium',
                     )}
                     

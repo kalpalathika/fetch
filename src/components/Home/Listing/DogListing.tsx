@@ -84,7 +84,7 @@ export const DogListing = () => {
 
     // Handle loading states
     if (isError){
-        return <p>Error loading data</p>
+        return <p className="text-gray-600 text-center mt-6 text-lg">Error loading data. Please try to logout and login again!</p>
     }
 
     // handle case when there is no data

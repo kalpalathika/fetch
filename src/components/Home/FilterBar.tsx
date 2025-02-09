@@ -7,7 +7,7 @@ import {
   DialogPanel,
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { FunnelIcon, Squares2X2Icon } from '@heroicons/react/20/solid';
+import { FunnelIcon } from '@heroicons/react/20/solid';
 import { BreedSelect } from './Filter/BreedSelect'
 import { AgeSlider } from './Filter/AgeSlider'
 import { SortSelect } from './Filter/SortSelect'
@@ -22,7 +22,7 @@ export default function Example() {
     handleSubmit
   } = useFilter()
   return (
-    <div className="bg-white w-screen p-4">
+    <div className="w-screen p-4">
       <div>
         {/* Mobile filter dialog */}
         <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
@@ -49,11 +49,19 @@ export default function Example() {
               </div>
 
               {/* Filters */}
-              <form className="mt-4 border-t border-gray-200 p-6">
+              <form onSubmit={(e)=>{handleSubmit(e); setMobileFiltersOpen(false)}} className="mt-4 border-t border-gray-200 p-6">
                 <h3 className="sr-only">Categories</h3>
                 <BreedSelect/>
                 <AgeSlider/>
                 <SortSelect/>
+                <div>
+                  <button
+                    type="submit"
+                    className="flex w-full mt-8  justify-center rounded-md bg-[#7d1f70] px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Let's Go
+                  </button>
+                </div>
               </form>
             </DialogPanel>
           </div>
@@ -64,15 +72,10 @@ export default function Example() {
             <h1 className="text-4xl font-bold tracking-tight text-[#7d1f70]">Adopt your fur baby</h1>
 
             <div className="flex items-center">
-
-              <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
-                <span className="sr-only">View grid</span>
-                <Squares2X2Icon aria-hidden="true" className="size-5" />
-              </button>
               <button
                 type="button"
                 onClick={() => setMobileFiltersOpen(true)}
-                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                className="-m-2 ml-6 p-2 text-gray-400 hover:text-gray-500 hover:cursor-pointer sm:ml-6 lg:hidden"
               >
                 <span className="sr-only">Filters</span>
                 <FunnelIcon aria-hidden="true" className="size-5" />
@@ -95,7 +98,7 @@ export default function Example() {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-[#7d1f70] px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-md bg-[#7d1f70] px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:opacity-75 hover:cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Let's Go
                   </button>
