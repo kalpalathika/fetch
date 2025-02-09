@@ -1,8 +1,8 @@
 
-import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { DogCard } from '../Home/Listing/DogCard'
 import { Dog } from '../../types'
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 interface DogMatchModalProps {
     dog: Dog 
@@ -26,14 +26,14 @@ export const DogMatchModal = ({dog, onClose,isOpen}: DogMatchModalProps) => {
             transition
             className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
           >
-             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+             <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               <button
                 type="button"
                 data-autofocus
                 onClick={() => onClose()}
-                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 hover:cursor-pointer sm:mt-0 sm:w-auto"
+                className="mt-3 inline-flex w-full justify-center rounded-full bg-white px-2 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 hover:cursor-pointer sm:mt-0 sm:w-auto"
               >
-                Cancel
+                <XMarkIcon className="h-6 w-6 text-gray-500" />
               </button>
             </div>
             <div className="bg-white flex justify-center items-center px-4 pt-5 pb-10 sm:p-6 sm:pb-12">
