@@ -1,5 +1,5 @@
-import FilterBar from "../components/FilterBar";
-import { Layout } from "../components/Layout";
+import FilterBar from "../components/Home/FilterBar";
+import { Layout } from "../components/Home/Layout/Layout";
 
 const HomePage = () => {
     return (

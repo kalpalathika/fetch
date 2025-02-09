@@ -1,5 +1,5 @@
 import { FavouriteListing } from "../components/FavouriteListing"
-import { Layout } from "../components/Layout"
+import { Layout } from "../components/Home/Layout/Layout"
 
 
 const FavouritesPage = () => {
