@@ -1,4 +1,3 @@
-import { DogCard } from "./DogCard"
 
 
 export const FavouriteListing = () => {

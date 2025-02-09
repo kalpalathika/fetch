@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
-import { useDogSearchListing, useFetchBreeds } from "../services/dogListing/servicesQuery";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+    selectedBreedsAtom,
+    ageMinAtom,
+    ageMaxAtom,
+    zipCodesAtom,
+    sortAtom,
+} from "../store/filterStoreAtom";
+import { useDogSearchListing } from "../services/dogListing/servicesQuery";
 import { dogStoreAtom } from "../store/dogStoreAtom";
+import { useEffect } from "react";
+
+export const useFilter= () => {
+    // Recoil state
+    const breeds = useRecoilValue(selectedBreedsAtom)
+    const ageMin = useRecoilValue(ageMinAtom)
+    const ageMax = useRecoilValue(ageMaxAtom)
+    const sort = useRecoilValue(sortAtom)
 
 
-export const userFilter = () => {
-    const [selectedBreeds, setSelectedBreeds] = useState<string[]>([]);
-    const [ageMin, setAgeMin] = useState(1);
-    const [ageMax,setAgeMax] = useState(15);
-    const [zipCodes, setZipCodes] = useState<string[]>([]);
-    const [sort, setSort] = useState('breed:asc');
+    const [zipCodes, setZipCodes] = useRecoilState(zipCodesAtom);
+
     const [_, setDogStore] = useRecoilState(dogStoreAtom);
 
-
-    // Fetch breeds list
-    const { data: breedData, isLoading: isBreedsLoading, isError: isBreedsError } = useFetchBreeds();
+  
 
     // Fetch dog search results based on form values
     const {
@@ -22,7 +30,7 @@ export const userFilter = () => {
         isPending,
         isError,
         refetch,
-    } = useDogSearchListing({ sort, ageMin, ageMax, breeds: selectedBreeds, zipCodes });
+    } = useDogSearchListing({ sort, ageMin, ageMax, breeds, zipCodes });
 
     useEffect(() => {
         setDogStore({
@@ -32,37 +40,24 @@ export const userFilter = () => {
         });
     }, [data, isPending, isError, setDogStore]);
 
-     // Form submission handler to refetch data
+    // Form submission handler to refetch data
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        refetch(); 
+        refetch();
     };
 
-     // Handlers for form field changes
-    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => setSort(e.target.value);
-    const handleAgeMinChange = (e: React.ChangeEvent<HTMLInputElement>) => setAgeMin(Number(e.target.value));
-    const handleAgeMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => setAgeMax(Number(e.target.value));
-    const handleBreedsChange = (selectedBreeds: string[]) => setSelectedBreeds(selectedBreeds);
+    // Handlers for form field changes
+   
+
+      
     const handleZipCodesChange = (selectedZipCodes: string[]) => setZipCodes(selectedZipCodes);
 
     return {
-        breeds: breedData || [],
-        isBreedsLoading,
-        isBreedsError,
         handleSubmit,
-        handleSortChange,
-        handleAgeMinChange,
-        handleAgeMaxChange,
-        handleBreedsChange,
         handleZipCodesChange,
         sort,
         ageMin,
         ageMax,
-        selectedBreeds,
         zipCodes,
-      };
-
-
-    
-
-}
+    };
+};
