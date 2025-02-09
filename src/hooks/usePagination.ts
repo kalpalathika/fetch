@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react"
-import { useDogPaginationListing } from "../services/dogListing/servicesQuery";
+import { useDogSearchListing } from "../services/dogListing/servicesQuery";
 import { dogStoreAtom } from "../store/dogStoreAtom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { ageMaxAtom, ageMinAtom, selectedBreedsAtom, sortAtom } from "../store/filterStoreAtom";
 
 
 export const usePagination = () => {
     const [_, setDogStore] = useRecoilState(dogStoreAtom);
     const [from, setFrom] = useState(0);
-    
+    const breeds = useRecoilValue(selectedBreedsAtom)
+    const ageMin = useRecoilValue(ageMinAtom)
+    const ageMax = useRecoilValue(ageMaxAtom)
+    const sort = useRecoilValue(sortAtom)
+   
     const {
         data,
         isError,
+        refetch,
+    } = useDogSearchListing({ from,breeds,ageMin,ageMax,sort });
 
-    } = useDogPaginationListing({from})
-    
+    useEffect(() => {
+        refetch(); // Trigger data fetch manually whenever 'from' changes
+    }, [from, refetch]);
+
     useEffect(() => {
         setDogStore((prevState) => ({
             dogList: data?.resultIds || [],

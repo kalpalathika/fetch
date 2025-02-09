@@ -2,16 +2,6 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import { getDogsSearchListApi, postDogsApi, postLocationsApi, getBreedsApi } from "./api"
 import { Dog, DogSearchParams, DogSearchResponse, LocationsResponse } from "../../types"
 
-export const useDogPaginationListing = (
-    {
-        from = 0,
-      }: DogSearchParams) => {
-    return useQuery<DogSearchResponse>({
-        queryKey: ["dogList",from],
-        queryFn: () => getDogsSearchListApi({ from }),
-    })
-}
-
 
 export const useDogSearchListing = (
     {
