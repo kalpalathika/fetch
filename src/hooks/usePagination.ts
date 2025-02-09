@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 export const usePagination = () => {
     const [_, setDogStore] = useRecoilState(dogStoreAtom);
     const [from, setFrom] = useState(0);
-
+    
     const {
         data,
         isError,
