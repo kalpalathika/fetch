@@ -15,3 +15,4 @@ export const DEFAULT_SELECTED_BREEDS: string[] = [];
 export const DEFAULT_AGE_RANGE = { ageMin: 1, ageMax: 15 };
 export const DEFAULT_ZIP_CODES: string[] = [];
 export const DEFAULT_SORT = "breed:asc";
+export const DEFAULT_PAGE_SIZE = 25;

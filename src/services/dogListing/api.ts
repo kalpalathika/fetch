@@ -1,13 +1,13 @@
 import axios from "axios"
-import { BASE_URL } from "../../constants"
+import { BASE_URL, DEFAULT_AGE_RANGE, DEFAULT_PAGE_SIZE, DEFAULT_SORT } from "../../constants"
 import { Dog, DogSearchParams, DogSearchResponse, LocationsResponse } from "../../types";
 
 
 export const getDogsSearchListApi = async ({
     from = 0,
-    sort = "breed:asc",
-    ageMin = 1,
-    ageMax = 15,
+    sort = DEFAULT_SORT,
+    ageMin = DEFAULT_AGE_RANGE.ageMin,
+    ageMax = DEFAULT_AGE_RANGE.ageMax,
     breeds = [],
     zipCodes = [],
   }: DogSearchParams): Promise<DogSearchResponse> => {
@@ -18,7 +18,7 @@ export const getDogsSearchListApi = async ({
             params: {
                 ageMin: ageMin,
                 ageMax: ageMax,
-                size: 25,
+                size: DEFAULT_PAGE_SIZE,
                 from: from,
                 sort: sort,
                 breeds: breeds,
