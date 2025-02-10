@@ -50,7 +50,6 @@ export default function Example() {
 
               {/* Filters */}
               <form onSubmit={(e)=>{handleSubmit(e); setMobileFiltersOpen(false)}} className="mt-4 border-t border-gray-200 p-6">
-                <h3 className="sr-only">Categories</h3>
                 <BreedSelect/>
                 <AgeSlider/>
                 <SortSelect/>
@@ -91,7 +90,6 @@ export default function Example() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form onSubmit={handleSubmit} className="hidden lg:flex lg:flex-col lg:gap-8">
-                <h3 className="sr-only">Categories</h3>
                   <BreedSelect />
                   <AgeSlider />
                   <SortSelect/>
@@ -108,8 +106,8 @@ export default function Example() {
               <div className="lg:col-span-3">              
                 <DogListing />
                 <div className="mt-8">
-                        <Pagination/>
-                  </div>
+                    <Pagination/>
+                </div>
               </div>
             </div>
           </section>
