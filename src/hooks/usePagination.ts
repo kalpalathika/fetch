@@ -3,6 +3,7 @@ import { useDogSearchListing } from "../services/dogListing/servicesQuery";
 import { dogStoreAtom } from "../store/dogStoreAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ageMaxAtom, ageMinAtom, selectedBreedsAtom, sortAtom } from "../store/filterStoreAtom";
+import { DEFAULT_PAGE_SIZE } from "../constants";
 
 
 export const usePagination = () => {
@@ -32,7 +33,7 @@ export const usePagination = () => {
     }, [data, isError,setDogStore]);
 
     const handlePageChange = async (page: number) => {
-        setFrom((page) * 25)
+        setFrom((page) * DEFAULT_PAGE_SIZE)
         window.scrollTo({ top: 0, behavior: 'smooth' })
     };
 

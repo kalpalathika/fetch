@@ -1,4 +1,3 @@
-// src/store/favouritesAtom.ts
 import { atom } from 'recoil';
 import { Dog } from '../types';
 import { recoilPersist } from 'recoil-persist';

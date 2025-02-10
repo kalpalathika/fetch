@@ -40,8 +40,9 @@ const NavBar = () => {
             <div className="flex shrink-0 items-center">
               <img
                 alt="Your Company"
-                src="/logo.svg"
-                className="h-8 w-auto"
+                src="/logo-light.svg"
+                className="h-8 w-auto cursor-pointer"
+                onClick={() => (window.location.href = "/home")}
               />
             </div>
           </div>

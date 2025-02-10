@@ -2,6 +2,7 @@ import ReactPaginate from 'react-paginate';
 import { usePagination } from '../../../hooks/usePagination';
 import { useRecoilValue } from 'recoil';
 import { dogStoreAtom } from '../../../store/dogStoreAtom';
+import { DEFAULT_PAGE_SIZE } from '../../../constants';
 
 
 
@@ -15,7 +16,7 @@ export const Pagination = () => {
       nextLabel=">"
       onPageChange={(selectedItem: { selected: number }) => handlePageChange(selectedItem.selected)}
       pageRangeDisplayed={3}
-      pageCount={Math.ceil(total / 25)}
+      pageCount={Math.ceil(total / DEFAULT_PAGE_SIZE)}
       previousLabel="<"
       renderOnZeroPageCount={null}
       containerClassName="flex items-center justify-center space-x-2 mt-4 sm:space-x-3 md:space-x-4"

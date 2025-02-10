@@ -10,7 +10,6 @@ interface DesktopFiltersProps {
 export const DesktopFilters = ({ onSubmit }: DesktopFiltersProps) => {
   return (
     <form onSubmit={onSubmit} className="hidden lg:flex lg:flex-col lg:gap-8">
-      <h3 className="sr-only">Categories</h3>
       <BreedSelect />
       <AgeSlider />
       <SortSelect />

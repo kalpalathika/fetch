@@ -7,9 +7,11 @@ import { dogStoreAtom } from "../../../store/dogStoreAtom";
 import {SkeletonCardLoader} from "../../common/SkeletonCardLoader";
 
 export const DogListing = () => {
+    // states
     const [dogDetailListWithLocations, setDogDetailListWithLocations] = useState<Dog[]>([]);
     const { dogList, isError: isDogSearchError } = useRecoilValue(dogStoreAtom);
 
+    // react query
     const {
         mutate: fetchDogDetails,
         data: dogDetailList, 
@@ -23,6 +25,7 @@ export const DogListing = () => {
         isError: isLocationsError
     } = useFetchLocations();
 
+    // rendering logic
     const fetchAndSetLocations = async (zipcodes: string[]) => {
         
         if (!zipcodes?.length) return;
@@ -58,10 +61,6 @@ export const DogListing = () => {
         if (dogList?.length) {
             fetchDogDetails(dogList)
         }
-        // if ( sdogDetailList?.length){
-        //     const zipCodes: string[] = dogDetailList?.map((dog: Dog)=> dog.zip_code) ?? [];
-        //     fetchAndSetLocations(zipCodes);
-        // }
     }, [dogList, fetchDogDetails]);
 
     useEffect(() => {

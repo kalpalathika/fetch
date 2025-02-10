@@ -20,6 +20,11 @@ export const BreedSelect = () => {
         if (actionMeta?.action == "remove-value" ){
             setSelectedBreeds((prevBreeds) => prevBreeds.filter(breed => breed !== actionMeta?.removedValue?.value));
         }
+
+        if (actionMeta?.action === "clear"){
+            setSelectedBreeds((prevBreeds) => (prevBreeds.length > 0 ? [] : prevBreeds));
+
+        }
     }; 
 
     const breedOptions = breedData?.map((breed: string) => ({

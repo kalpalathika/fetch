@@ -1,14 +1,15 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { getDogsSearchListApi, postDogsApi, postLocationsApi, getBreedsApi } from "./api"
 import { Dog, DogSearchParams, DogSearchResponse, LocationsResponse } from "../../types"
+import { DEFAULT_AGE_RANGE, DEFAULT_SORT } from "../../constants"
 
 
 export const useDogSearchListing = (
     {
         from = 0,
-        sort = "breed:asc",
-        ageMin = 1,
-        ageMax = 15,
+        sort = DEFAULT_SORT,
+        ageMin = DEFAULT_AGE_RANGE.ageMin,
+        ageMax = DEFAULT_AGE_RANGE.ageMax,
         breeds = [],
         zipCodes = [],
       }: DogSearchParams) => {

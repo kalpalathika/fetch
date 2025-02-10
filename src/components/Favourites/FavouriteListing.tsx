@@ -8,16 +8,19 @@ import { Dog } from "../../types";
 
 
 export const FavouriteListing = () => {
+    // states
     const [matchedDog, setMatchedDog] = useState<Dog | null>(null);;
     const dogList = useRecoilValue(favouritesAtom);
     const [isModalOpen, setIsModalOpen] = useState(false);
     
+    // react query
     const {
         mutate: fetchDogMatch,
         isPending,
         isError
     } = useFetchDogMatch()
 
+    // rendering logic
     const handleFetchMatch = () => {
         const dogIds = dogList?.map((dog)=> dog.id) ?? []
         fetchDogMatch(dogIds, {
@@ -36,6 +39,7 @@ export const FavouriteListing = () => {
         setMatchedDog(null); 
     };
 
+    // handle loading, no data and error cases
     if (isError){
         return  <p className="text-gray-600 text-center mt-6 text-lg"> Error loading data. Please try to logout and login again! </p>
     }
@@ -57,7 +61,7 @@ export const FavouriteListing = () => {
                   {isPending? "Finding..." : "Find My Pawfect Match !"}
                 </button>
             </div>
-            <div className="flex flex-wrap gap-6 justify-center items-center mt-12 pb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-12 p-12">
 
                 { dogList.map((dog,index) => (
                         <DogCard key={index} dog={dog} />
@@ -68,6 +72,6 @@ export const FavouriteListing = () => {
                 )}
             
             </div>
-    </div>
+        </div>
     )
 }
