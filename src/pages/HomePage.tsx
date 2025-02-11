@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Layout } from './components/Layout/Layout';
-import {MobileFiltersDialog} from './components/Home/Filter/MobileFiltersDialog';
-import {DesktopFilters} from './components/Home/Filter/DesktopFilters';
-import {Header} from './components/Home/Header/Header';
-import {DogListing} from './components/Home/Listing/DogListing';
-import {Pagination} from './components/Home/Pagination/Pagination';
-import {useFilter} from './hooks/useFilter';
+import { Layout } from '../components/Layout/Layout';
+import {MobileFiltersDialog} from '../components/Home/Filter/MobileFiltersDialog';
+import {DesktopFilters} from '../components/Home/Filter/DesktopFilters';
+import {Header} from '../components/Home/Header/Header';
+import {DogListing} from '../components/Home/Listing/DogListing';
+import {Pagination} from '../components/Home/Pagination/Pagination';
+import {useFilter} from '../hooks/useFilter';
 
 
 const HomePage = () => {

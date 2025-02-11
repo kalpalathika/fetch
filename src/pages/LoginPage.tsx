@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {useLogin} from "./services/user/servicesQuery";
+import { useLogin } from "../services/user/servicesQuery";
 
 const LoginPage = () => {
     const [userName, setUserName] = useState('');
