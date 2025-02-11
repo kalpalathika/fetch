@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { QueryClient } from '@tanstack/react-query';
 import { renderWithClient } from './utils/test-utils';
+import '@testing-library/jest-dom';
 
 // Mock child components
 
