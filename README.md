@@ -20,32 +20,32 @@ https://fetch-kalpalathika-ramanujam.netlify.app/
 #### Option 1: Using Docker
 
 1. Clone the repository:
-git clone [<repository-url>](https://github.com/kalpalathika/fetch.git)
+git clone `https://github.com/kalpalathika/fetch.git`
 
-2. Build and run the application using Docker :
-docker build -t my-vite-react-app .
+2. Build and run the application using Docker:
+`docker build -t my-vite-react-app` 
 
-3. Run in detatched mode
-docker run -d -p 3000:8000 my-vite-react-app
+3. Run in detatched mode:
+`docker run -d -p 3000:8000 my-vite-react-app`
 
-4. To stop docker
-docker stop <id>
+4. To stop docker:
+`docker stop <id>`
 
-5. To delete the container 
-docker rm <id>
+5. To delete the container: 
+`docker rm <id>`
 
 4. Access the application: Open your web browser and visit `http://localhost:5173`.
 
 #### Option 2: Using Node.js
 
 1. Clone the repository:
-git clone [<repository-url>](https://github.com/kalpalathika/fetch.git)
+git clone `https://github.com/kalpalathika/fetch.git`
 
 2. Install dependencies:
-npm install
+`npm install`
 
 3. Start the application:
-npm run start
+`npm run start`
 
 4. Access the application: Open your web browser and visit `http://localhost:5173`.
 
@@ -57,9 +57,9 @@ npm run test
 ![Test](assets/testRuns.png)
 
 ## Routes 
-1. Login **/**
-2. Home   **/home**
-3. Favourites **/favourites**
+1. Login `/`
+2. Home   `/home`
+3. Favourites `/favourites`
 
 ### Component Architecture  
 ![Architecture](assets/componentArchitecture.png)
