@@ -43,14 +43,18 @@ const FavouritesPage = () => {
 
     // handle loading, no data and error cases
     if (isError){
-        return  <p className="text-gray-600 text-center mt-6 text-lg"> Error loading data. Please try to logout and login again! </p>
+        return  <Layout>
+                    <p className="text-gray-600 text-center mt-6 text-lg"> Error loading data. Please try to logout and login again! </p>
+                </Layout>
     }
 
     if (dogList.length === 0 && !isError){
-       return <p className="text-gray-600 text-center mt-6 text-lg">
-            No pawsome favourites yet! 🐾 <br />
-            Add some adorable doggos to your favorites and find your perfect furry friend! ❤️🐶
-        </p>
+       return  <Layout>
+                    <p className="text-gray-600 text-center mt-6 text-lg">
+                        No pawsome favourites yet! 🐾 <br />
+                        Add some adorable doggos to your favorites and find your perfect furry friend! ❤️🐶
+                    </p>
+                </Layout>
     }
 
     return (

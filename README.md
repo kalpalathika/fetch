@@ -20,7 +20,7 @@ https://fetch-kalpalathika-ramanujam.netlify.app/
 #### Option 1: Using Docker
 
 1. Clone the repository:
-git clone `https://github.com/kalpalathika/fetch.git`
+`git clone https://github.com/kalpalathika/fetch.git`
 
 2. Build and run the application using Docker:
 `docker build -t my-vite-react-app` 
@@ -34,12 +34,12 @@ git clone `https://github.com/kalpalathika/fetch.git`
 5. To delete the container: 
 `docker rm <id>`
 
-4. Access the application: Open your web browser and visit `http://localhost:5173`.
+4. Access the application: Open your web browser and visit `http://localhost:3000`.
 
 #### Option 2: Using Node.js
 
 1. Clone the repository:
-git clone `https://github.com/kalpalathika/fetch.git`
+`git clone https://github.com/kalpalathika/fetch.git`
 
 2. Install dependencies:
 `npm install`
@@ -104,7 +104,7 @@ npm run test
 ## Future Scope
 1. More test case coverage
 2. Caching for Pagination
-3. More responsive design coverage
+3. Add Location filters
 
 ## About Me
 I am Kalpalathika Ramanujam, a dedicated Software Engineer with over three years of industry experience specializing in developing scalable full-stack applications using React, Angular and C# .Net. Currently, I am pursuing my Master’s in Computer Science at Rochester Institue of Technology. As a skilled problem solver, I am eager to apply my technical expertise and innovative approach in a dynamic new role.

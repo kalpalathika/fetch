@@ -10,13 +10,14 @@ export const DogListing = () => {
     // states
     const [dogDetailListWithLocations, setDogDetailListWithLocations] = useState<Dog[]>([]);
     const { dogList, isError: isDogSearchError } = useRecoilValue(dogStoreAtom);
+    const [isFetching, setIsFetching] = useState(false);
 
     // react query
     const {
         mutate: fetchDogDetails,
         data: dogDetailList, 
         isPending: isDogDetailLoading, 
-        isError: isDogDetailError
+        isError: isDogDetailError,
     } = useFetchDogDetails();
 
     const {
@@ -58,8 +59,11 @@ export const DogListing = () => {
     }
 
     useEffect(()=> {
+        setIsFetching(true);
         if (dogList?.length) {
-            fetchDogDetails(dogList)
+            fetchDogDetails(dogList, {
+                onSettled: () => setIsFetching(false) // Reset after fetch completes
+            });
         }
     }, [dogList, fetchDogDetails]);
 
@@ -72,7 +76,7 @@ export const DogListing = () => {
         }
     }, [dogDetailList]);
     
-    const isLoading = isDogDetailLoading || isLocationsLoading;
+    const isLoading = isFetching || isDogDetailLoading || isLocationsLoading;
     const isError = isDogSearchError || isDogDetailError || isLocationsError;
 
     // Handle loading states
@@ -87,7 +91,7 @@ export const DogListing = () => {
     }
 
     // handle case when there is no data
-    if (!dogDetailListWithLocations || !dogDetailListWithLocations.length){
+    if (!dogList || !dogList.length ){
         return <p className="text-gray-600 mt-6 text-lg">Oh no! No adorable pups found. Try tweaking your filters and let's find your perfect furry friend! </p>
     }
 
