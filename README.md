@@ -54,7 +54,7 @@ git clone `https://github.com/kalpalathika/fetch.git`
 To run integration tests, execute the following command:
 npm run test
 
-![Test](assets/testRuns.png)
+![Test](images/testRuns.png)
 
 ## Routes 
 1. Login `/`
@@ -62,7 +62,7 @@ npm run test
 3. Favourites `/favourites`
 
 ### Component Architecture  
-![Architecture](assets/componentArchitecture.png)
+![Architecture](images/componentArchitecture.png)
  
 ## APIs Used
 1. POST /auth/login
