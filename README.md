@@ -1,50 +1,91 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Fetch App - React + TypeScript + Vite
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+Fetch App is a web application designed for dog lovers to explore, filter, and interact with various dog listings. It provides a user-friendly interface to search, filter, sort, and manage favorite dog profiles. The application is built using a React frontend and leverages Redux for state management, ensuring a responsive and seamless user experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Node.js (v20.12.2 or above)
+- Docker (optional)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### Option 1: Using Docker
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone the repository:
+2. Build and run the application using Docker Compose:
+3. Access the application: Open your web browser and visit `http://localhost:3000`.
+
+#### Option 2: Using Node.js
+
+1. Clone the repository:
+git clone <repository-url>
+
+2. Build and run the application using Docker Compose:
+docker compose up --build
+
+3. Access the application: Open your web browser and visit `http://localhost:5173`.
+
+#### Option 2: Using Node.js
+
+1. Clone the repository:
+git clone <repository-url>
+
+2. Install dependencies:
+npm install
+
+3. Start the application:
+npm run dev
+
+4. Access the application: Open your web browser and visit `http://localhost:5173`.
+
+
+## Running Tests
+To run integration tests, execute the following command:
+npm run test
+
+## Demo
+
+
+
+## APIs Used
+1. POST /auth/login
+2. POST /auth/logout
+3. GET /dogs/breeds
+4. GET /dogs/search
+5. POST /dogs
+6. POST /dogs/match
+7. POST /locations
+
+## Features
+- **Authentication:** Secure login and logout functionality.
+- **Dog Filters:** Ability to filter dogs by breeds and age.
+- **Sorting Options:** Users can sort listings by breed, name, or age in ascending or descending order.
+- **Pagination:** Supports browsing through dog listings in a paginated format.
+- **Favorites Management:** Users can add or remove dogs from their favorites.
+- **Matchmaking:** Feature to generate matches for dogs, displayed using a modal.
+- **Responsive Design:** Fully responsive layout that adapts to various device screens.
+- **Error Handling:** Render meaningful error messages whenever required 
+- **Persistent Favourites:** Favourite dogs are retained during the session until logout.
+
+## Tech Stack
+
+- **Frontend:** 
+1. React 
+2. React Router DOM 
+3. Typescript 
+4. Tailwind CSS
+5. React Query
+6. Recoil
+7. react-select library
+8. react-paginate libabrary
+9. HTML 
+
+- **Testing:** 
+1. Jest for vite 
+2. React Testing Library
