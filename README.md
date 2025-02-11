@@ -4,7 +4,9 @@
 
 ## Overview
 
-Fetch App is a web application designed for dog lovers to explore, filter, and interact with various dog listings. It provides a user-friendly interface to search, filter, sort, and manage favorite dog profiles. The application is built using a React frontend and leverages Redux for state management, ensuring a responsive and seamless user experience.
+Fetch App is a web application designed for dog lovers to explore, filter, and interact with various dog listings. It provides a user-friendly interface to search, filter, sort, and manage favorite dog profiles. The application is built using a React frontend and leverages Redux for state management, ensuring a responsive user experience.
+
+https://fetch-kalpalathika-ramanujam.netlify.app/
 
 ## Getting Started
 
@@ -18,29 +20,32 @@ Fetch App is a web application designed for dog lovers to explore, filter, and i
 #### Option 1: Using Docker
 
 1. Clone the repository:
-2. Build and run the application using Docker Compose:
-3. Access the application: Open your web browser and visit `http://localhost:3000`.
+git clone [<repository-url>](https://github.com/kalpalathika/fetch.git)
+
+2. Build and run the application using Docker :
+docker build -t my-vite-react-app .
+
+3. Run in detatched mode
+docker run -d -p 3000:8000 my-vite-react-app
+
+4. To stop docker
+docker stop <id>
+
+5. To delete the container 
+docker rm <id>
+
+4. Access the application: Open your web browser and visit `http://localhost:5173`.
 
 #### Option 2: Using Node.js
 
 1. Clone the repository:
-git clone <repository-url>
-
-2. Build and run the application using Docker Compose:
-docker compose up --build
-
-3. Access the application: Open your web browser and visit `http://localhost:5173`.
-
-#### Option 2: Using Node.js
-
-1. Clone the repository:
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/kalpalathika/fetch.git)
 
 2. Install dependencies:
 npm install
 
 3. Start the application:
-npm run dev
+npm run start
 
 4. Access the application: Open your web browser and visit `http://localhost:5173`.
 
@@ -49,10 +54,16 @@ npm run dev
 To run integration tests, execute the following command:
 npm run test
 
-## Demo
+![Test](assets/testRuns.png)
 
+## Routes 
+1. Login **/**
+2. Home   **/home**
+3. Favourites **/favourites**
 
-
+### Component Architecture  
+![Architecture](assets/componentArchitecture.png)
+ 
 ## APIs Used
 1. POST /auth/login
 2. POST /auth/logout
@@ -87,5 +98,13 @@ npm run test
 9. HTML 
 
 - **Testing:** 
-1. Jest for vite 
+1. Vitest 
 2. React Testing Library
+
+## Future Scope
+1. More test case coverage
+2. Caching for Pagination
+3. More responsive design coverage
+
+## About Me
+I am Kalpalathika Ramanujam, a dedicated Software Engineer with over three years of industry experience specializing in developing scalable full-stack applications using React, Angular and C# .Net. Currently, I am pursuing my Master’s in Computer Science at Rochester Institue of Technology. As a skilled problem solver, I am eager to apply my technical expertise and innovative approach in a dynamic new role.
