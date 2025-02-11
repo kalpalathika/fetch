@@ -23,9 +23,10 @@ const HomePage = () => {
                 handleSubmit(e);
                 setMobileFiltersOpen(false);
               }}
+              test-id="mobile-filters-dialog"
             />
   
-            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" role="main">
               <Header onOpenMobileFilters={() => setMobileFiltersOpen(true)} />
   
               <section aria-labelledby="products-heading" className="pt-6 pb-24">

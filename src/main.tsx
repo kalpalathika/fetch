@@ -40,17 +40,19 @@ const RouteLayout = () => (
         </PrivateRoute>
       }
     />
+    <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
 );
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RecoilRoot>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <RouteLayout /> 
-        </Router>
-      </QueryClientProvider>
-    </RecoilRoot>
+    <Router>
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+            <RouteLayout /> 
+        </QueryClientProvider>
+      </RecoilRoot>
+    </Router>
+
   </StrictMode>
 );

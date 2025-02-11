@@ -88,7 +88,7 @@ export const DogListing = () => {
 
     // handle case when there is no data
     if (!dogDetailListWithLocations || !dogDetailListWithLocations.length){
-        return <p>No dogs found.</p>
+        return <p className="text-gray-600 mt-6 text-lg">Oh no! No adorable pups found. Try tweaking your filters and let's find your perfect furry friend! </p>
     }
 
     return (

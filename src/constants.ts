@@ -1,4 +1,4 @@
-export const BASE_URL = import.meta.env.VITE_BASE_URL
+export const BASE_URL = "https://frontend-take-home-service.fetch.com"
 
 export const SORT_OPTIONS = [
     { label: 'Breed (A-Z)', value: 'breed:asc' },
