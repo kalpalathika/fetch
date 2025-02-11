@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useRecoilValue } from "recoil"
-import { favouritesAtom } from "../store/favouritesStoreAtom";
-import { useFetchDogMatch } from "../services/favouriteListing/serviceQuery";
-import { DogCard } from "../components/Home/Listing/DogCard";
-import { DogMatchModal } from "../components/Favourites/DogMatchModal";
-import { Dog } from "../types";
-import { Layout } from "../components/Home/Layout/Layout";
+import { favouritesAtom } from "./store/favouritesStoreAtom";
+import { Dog } from "./types";
+import {Layout} from "./components/Layout/Layout";
+import {useFetchDogMatch} from "./services/favouriteListing/serviceQuery"
+import {DogCard} from "./components/Home/Listing/DogCard";
+import {DogMatchModal} from "./components/Favourites/DogMatchModal";
+
+
 
 const FavouritesPage = () => {
     // states

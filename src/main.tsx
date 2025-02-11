@@ -7,11 +7,11 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import LoginPage from './pages/LoginPage.tsx';
-import HomePage from './pages/HomePage.tsx';
-import FavouritesPage from './pages/FavouritesPage.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
+import LoginPage from './LoginPage';
+import HomePage from './HomePage';
+import FavouritesPage from './FavouritesPage';
 
 const queryClient = new QueryClient();
 
