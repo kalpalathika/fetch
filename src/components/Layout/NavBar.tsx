@@ -1,7 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useLogout } from '../../../services/user/servicesQuery';
 import { useLocation } from 'react-router-dom';
+import { useLogout } from '../../services/user/servicesQuery';
 
 
 
